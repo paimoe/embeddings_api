@@ -6,7 +6,7 @@ authors = ["paimoe <me@paimoe.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 sentence-transformers = "^2.2.2"
 fastapi = "^0.99.1"
 uvicorn = "^0.22.0"

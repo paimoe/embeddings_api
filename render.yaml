@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: Embeddings API
+    env: python
+    region: frankfurt
+    repo: https://github.com/paimoe/embeddings_api.git
+    buildCommand: "poetry install"
+    startCommand: "uvicorn main:app --reload --host 0.0.0.0 --port 10000"
+    plan: free
+    autoDeploy: true
+    # domains:
+    #   - embeddings.rugbybot.com
+    envVars:
+      - fromGroup: embeddings_api
+    # disk:
+    #   name: data
+    #   mountPath: /data
+    #   sizeGB: 2
+
+envVarGroups:
+  - name: embeddings_api
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.11
+      - key: POETRY_VERSION
+        value: 1.2.2
