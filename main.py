@@ -16,21 +16,16 @@ def generate(text):
 
 def similarity(embed1, embed2):
     return util.pytorch_cos_sim(embed1, embed2)
-    
-# embeddings = model.encode(sentences)
-# print(embeddings)
-# s1 = embeddings[0]
-# s2 = embeddings[1]
-# print(s1.shape)
-
-# print("similarity")
-# print(util.pytorch_cos_sim(s1, s2))
 
 app = FastAPI()
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
+
+@app.get("/ping")
+async def ping():
+    return "pong"
 
 @app.post("/embed")
 async def embed(req: EmbedRequest):
